@@ -6,9 +6,6 @@
 This is a project started by Udacity, the topic is Behavior Cloning. The training data come from the training driving by ourself, which will produce images from the cameras mounted on the car and a CVS file which contain basic information of the training driving process.
 
 ---
-
-There are **2** python files: **model.py**, and **drive.py**, in which **drive.py** basically provided by Udacity.
-
 ## model.py
 ###There are several steps in the file.
 1. Import all the data and resize all the images for only remaining the most useful information. There are some useless part in the     images which is not needed for training like skies. In addition, downsampling the images can effectively save the training time. Finally, I only remain one channel of the images mainly for saving training time. Details are in the python script. 
