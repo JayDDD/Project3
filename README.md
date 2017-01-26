@@ -3,17 +3,11 @@
 
 ## Overview
 
-In the first submission, I did all of the work on iPython notebook. 
-
-In this second submission, I created standalone python scripts to do all of the deep learning training.
-
-This iPython notebook describes the function of each python script involved in the project.
-
-Follow this link to watch the video **https://www.youtube.com/watch?v=7YA6JL4vcw4**.
+This is a project started by Udacity, the topic is Behavior Cloning.
 
 ---
 
-There are **3** python scripts: **preprocess.py**, **model.py**, and **drive.py**.
+There are **2** python files: **model.py**, and **drive.py**, in which ** drive.py** basically provided by Udacity.
 
 ## preprocess.py
 This python script imports the raw image data and resizes them.
