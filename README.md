@@ -21,6 +21,7 @@ This is a project started by Udacity, the topic is Behavior Cloning. The trainin
 
 
 
+
 ## drive.py
 The main purpose for this python script is connect the code with the simulator using the model in **model.py**.
 
