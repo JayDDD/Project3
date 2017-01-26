@@ -1,6 +1,5 @@
 
-# Udacity Self-Driving Car Nanodegree
-# Behavioral Cloning Project - 2nd Submission
+# Project 3
 
 ## Overview
 
