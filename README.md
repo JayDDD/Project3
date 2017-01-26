@@ -7,7 +7,7 @@ This is a project started by Udacity, the topic is Behavior Cloning.
 
 ---
 
-There are **2** python files: **model.py**, and **drive.py**, in which ** drive.py** basically provided by Udacity.
+There are **2** python files: **model.py**, and **drive.py**, in which **drive.py** basically provided by Udacity.
 
 ## model.py
 ###There are several steps in the file.
@@ -23,138 +23,50 @@ This is the python script that receives the data from the Udacity program, predi
 
 Since the images were reshaped and normalized during training, the image from the program is reshaped and normalized just as in **preprocess.py** and **model.py**
 
----
 
-## Preprecessing
-
-As mentioned briefly above, the images are loaded from the local drive and reshaped by the function called **load_image**.
-
-Below are the original images from center, left, and right cameras and reshaped images at the right of each original image.
-
-
-```python
-### Import data
-import argparse
-import os
-import csv
-import base64
-import numpy as np
-import matplotlib.pyplot as plt
-
-folder_path = "/Users/wonjunlee/Downloads/udacity/Self-Driving-Car-Nanodegree/CarND-BehavioralCloning-P3"
-label_path = "{}/driving_log.csv".format(folder_path)
-
-data = []
-with open(label_path) as F:
-    reader = csv.reader(F)
-    for i in reader:
-        data.append(i) 
-
-print("data imported")
-```
-
-    data imported
-
-
-
-```python
-def load_image(data_line, j):
-    img = plt.imread(data_line[j].strip())[65:135:4,0:-1:4,0]
-    lis = img.flatten().tolist()
-    return lis
-
-i = 0
-for j in range(3):
-    plt.subplot(121)
-    img = plt.imread(data[i][j].strip())
-    plt.imshow(img)
-    if j == 0:
-        plt.title("Center")
-    elif j == 1:
-        plt.title("Left")
-    elif j == 2:
-        plt.title("Right")
-    plt.subplot(122)
-    a = np.array(load_image(data[i], j)).reshape(1, 18, 80, 1)
-    # a = load_image(data[img_num])
-    print(a.shape)
-    plt.imshow(a[0,:,:,0])
-    plt.title("Resized")
-    plt.show()
-del(a)
-```
-
-    (1, 18, 80, 1)
-
-
-
-![png](output_5_1.png)
-
-
-    (1, 18, 80, 1)
-
-
-
-![png](output_5_3.png)
-
-
-    (1, 18, 80, 1)
-
-
-
-![png](output_5_5.png)
-
-
-I had total **18899** items each contained three images from different angles: center, left, and right. So, there are total **18899 x 3 = 56697** images I reshaped and used for training.
-
----
 
 ## Training
 
 Below is the summary of the model I implemented to train the data.
 
-        ___________________________________________________________________________________________________
-        Layer (type)                     Output Shape          Param #     Connected to                     
-        ====================================================================================================
-        convolution2d_1 (Convolution2D)  (None, 16, 78, 16)    160         convolution2d_input_1[0][0]      
-        ____________________________________________________________________________________________________
-        activation_1 (Activation)        (None, 16, 78, 16)    0           convolution2d_1[0][0]            
-        ____________________________________________________________________________________________________
-        convolution2d_2 (Convolution2D)  (None, 14, 76, 8)     1160        activation_1[0][0]               
-        ____________________________________________________________________________________________________
-        activation_2 (Activation)        (None, 14, 76, 8)     0           convolution2d_2[0][0]            
-        ____________________________________________________________________________________________________
-        convolution2d_3 (Convolution2D)  (None, 12, 74, 4)     292         activation_2[0][0]               
-        ____________________________________________________________________________________________________
-        activation_3 (Activation)        (None, 12, 74, 4)     0           convolution2d_3[0][0]            
-        ____________________________________________________________________________________________________
-        convolution2d_4 (Convolution2D)  (None, 10, 72, 2)     74          activation_3[0][0]               
-        ____________________________________________________________________________________________________
-        activation_4 (Activation)        (None, 10, 72, 2)     0           convolution2d_4[0][0]            
-        ____________________________________________________________________________________________________
-        maxpooling2d_1 (MaxPooling2D)    (None, 5, 36, 2)      0           activation_4[0][0]               
-        ____________________________________________________________________________________________________
-        dropout_1 (Dropout)              (None, 5, 36, 2)      0           maxpooling2d_1[0][0]             
-        ____________________________________________________________________________________________________
-        flatten_1 (Flatten)              (None, 360)           0           dropout_1[0][0]                  
-        ____________________________________________________________________________________________________
-        dense_1 (Dense)                  (None, 16)            5776        flatten_1[0][0]                  
-        ____________________________________________________________________________________________________
-        activation_5 (Activation)        (None, 16)            0           dense_1[0][0]                    
-        ____________________________________________________________________________________________________
-        dense_2 (Dense)                  (None, 16)            272         activation_5[0][0]               
-        ____________________________________________________________________________________________________
-        activation_6 (Activation)        (None, 16)            0           dense_2[0][0]                    
-        ____________________________________________________________________________________________________
-        dense_3 (Dense)                  (None, 16)            272         activation_6[0][0]               
-        ____________________________________________________________________________________________________
-        activation_7 (Activation)        (None, 16)            0           dense_3[0][0]                    
-        ____________________________________________________________________________________________________
-        dropout_2 (Dropout)              (None, 16)            0           activation_7[0][0]               
-        ____________________________________________________________________________________________________
-        dense_4 (Dense)                  (None, 1)             17          dropout_2[0][0]                  
-        ====================================================================================================
-        Total params: 8023
+            ____________________________________________________________________________________________________
+            Layer (type)                     Output Shape          Param #     Connected to
+            ====================================================================================================
+            convolution2d_1 (Convolution2D)  (None, 18, 62, 16)    160         convolution2d_input_1[0][0]
+            ____________________________________________________________________________________________________
+            activation_1 (Activation)        (None, 18, 62, 16)    0           convolution2d_1[0][0]
+            ____________________________________________________________________________________________________
+            convolution2d_2 (Convolution2D)  (None, 16, 60, 8)     1160        activation_1[0][0]
+            ____________________________________________________________________________________________________
+            activation_2 (Activation)        (None, 16, 60, 8)     0           convolution2d_2[0][0]
+            ____________________________________________________________________________________________________
+            convolution2d_3 (Convolution2D)  (None, 14, 58, 4)     292         activation_2[0][0]
+            ____________________________________________________________________________________________________
+            activation_3 (Activation)        (None, 14, 58, 4)     0           convolution2d_3[0][0]
+            ____________________________________________________________________________________________________
+            convolution2d_4 (Convolution2D)  (None, 12, 56, 2)     74          activation_3[0][0]
+            ____________________________________________________________________________________________________
+            activation_4 (Activation)        (None, 12, 56, 2)     0           convolution2d_4[0][0]
+            ____________________________________________________________________________________________________
+            maxpooling2d_1 (MaxPooling2D)    (None, 6, 28, 2)      0           activation_4[0][0]
+            ____________________________________________________________________________________________________
+            dropout_1 (Dropout)              (None, 6, 28, 2)      0           maxpooling2d_1[0][0]
+            ____________________________________________________________________________________________________
+            flatten_1 (Flatten)              (None, 336)           0           dropout_1[0][0]
+            ____________________________________________________________________________________________________
+            dense_1 (Dense)                  (None, 16)            5392        flatten_1[0][0]
+            ____________________________________________________________________________________________________
+            activation_5 (Activation)        (None, 16)            0           dense_1[0][0]
+            ____________________________________________________________________________________________________
+        dropout_2 (Dropout)              (None, 16)            0           activation_5[0][0]
+    ____________________________________________________________________________________________________
+    dense_2 (Dense)                  (None, 1)             17          dropout_2[0][0]
+    ====================================================================================================
+    Total params: 7,095
+    Trainable params: 7,095
+    Non-trainable params: 0
+    ____________________________________________________________________________________________________
+    Train on 10845 samples, validate on 2712 samples
 
 ---
 # Conclusion
