@@ -17,7 +17,11 @@ This is a project started by Udacity, the topic is Behavior Cloning. The trainin
 4. Building model using Keras in reference to the tutorial by Udacity. Architecture details will be described later.
 5. After model training, save the model and weights as **model.json** and **model.h5** as required. 
 
+**This is original image from simulator.**
+
 ![before](https://cloud.githubusercontent.com/assets/20727164/22349960/e6a9c724-e3df-11e6-8d13-da1556edb8ff.jpg)
+
+**This is image after process which will be fed into model**
 
 ![after](https://cloud.githubusercontent.com/assets/20727164/22350048/4ad730c4-e3e0-11e6-976b-0177f854bc41.png)
 
