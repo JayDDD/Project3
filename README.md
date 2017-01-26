@@ -19,7 +19,7 @@ This is a project started by Udacity, the topic is Behavior Cloning. The trainin
 
 ![before](https://cloud.githubusercontent.com/assets/20727164/22349960/e6a9c724-e3df-11e6-8d13-da1556edb8ff.jpg)
 
-
+![after](https://cloud.githubusercontent.com/assets/20727164/22350048/4ad730c4-e3e0-11e6-976b-0177f854bc41.png)
 
 
 ## drive.py
