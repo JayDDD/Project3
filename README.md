@@ -17,6 +17,9 @@ This is a project started by Udacity, the topic is Behavior Cloning. The trainin
 4. Building model using Keras in reference to the tutorial by Udacity. Architecture details will be described later.
 5. After model training, save the model and weights as **model.json** and **model.h5** as required. 
 
+![before](https://cloud.githubusercontent.com/assets/20727164/22349960/e6a9c724-e3df-11e6-8d13-da1556edb8ff.jpg)
+
+
 
 ## drive.py
 The main purpose for this python script is connect the code with the simulator using the model in **model.py**.
