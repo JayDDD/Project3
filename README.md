@@ -27,6 +27,16 @@ The main purpose for this python script is connect the code with the simulator u
 
 The following table is the Model Architecture table automatically generated using **model.summary()**.
 
+In this architecture, I didn't try a lot of version actually, the whole structure is similar to the keras tutorial.
+
+For batch size choosing, training speed will be quicker with the increasement of batch size but limited to the
+memory of computer, 64 is a common value I always use.
+
+For epochs choosing, 10 is a very common value. With bigger epoch will benefit the model, but the driving works great
+with 10, so I didn't set a higher epoch.
+
+Overall, the architecture works fine at the first beginning after learning deep in the keras tutorial.
+
             ____________________________________________________________________________________________________
             Layer (type)                     Output Shape          Param #     Connected to
             ====================================================================================================
