@@ -14,8 +14,8 @@ There are **2** python files: **model.py**, and **drive.py**, in which **drive.p
 1. Import all the data and resize all the images for only remaining the most useful information. There are some useless part in the     images which is not needed for training like skies. In addition, downsampling the images can effectively save the training time. Finally, I only remain one channel of the images mainly for saving training time. Details are in the python script. 
 2. Set the images from three cameras as features and the turning angle as labels.
 
-            **Features shape: (13557, 20, 64, 1)**
-            **Labels shape: (13557,)**
+            Features shape: (13557, 20, 64, 1)
+            Labels shape: (13557,)
 3. Split the data into training and validation datasets, in which validation datasets are 20% of whole datasets.
 4. Building model using Keras in reference to the tutorial by Udacity. Architecture details will be described later.
 5. After model training, save the model and weights as **model.json** and **model.h5** as required. 
