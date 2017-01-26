@@ -9,25 +9,14 @@ This is a project started by Udacity, the topic is Behavior Cloning.
 
 There are **2** python files: **model.py**, and **drive.py**, in which ** drive.py** basically provided by Udacity.
 
-## preprocess.py
-This python script imports the raw image data and resizes them.
-
-I resized the image because image contains unnecessary background noises such as sky, river, and trees.
-
-I decided to remove them and reduced the size of the image by **25%**, then I used only one channel from each image. I found that the image data do not have to have a lot of pixels when training the model. I found reducing the size by 25% and using just one channel were more efficient in terms of time and space.
-
-I saved them as **features** and saved the data of steering angels as **labels**.
-
-Then, I splitted the data into **train** and **validation**, and saved them as **frontcamera.pickle** file.
-
 ## model.py
-The main purpose of this script is to train the model using the data saved from the above python script.
+###There are several steps in the file.
+1. Import all the data and resize all the images for only remaining the most useful information.
+2. Set the images from three cameras as features and the turning angle as labels.
+3. Split the data into training and validation datasets, in which validation datasets are 20% of whole datasets.
+4. Building model using Keras in reference to the tutorial by Udacity.
+5. After model training, save the model and weights as **model.json** and **model.h5** as required.
 
-First, it imports the **pickle** file from the local drive and train the data using model that I built.
-
-The detail of the model can be found in the script.
-
-When the training is done, the model and weights are saved as **model.json** and **model.h5**.
 
 ## drive.py
 This is the python script that receives the data from the Udacity program, predicts the steering angle using the deep learning model, and send the throttle and the predicted angles back to the program.
