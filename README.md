@@ -1,9 +1,9 @@
 
 # Project 3
 
-## Overview
+## Introduction
 
-This is a project started by Udacity, the topic is Behavior Cloning.
+This is a project started by Udacity, the topic is Behavior Cloning. The training data come from the training driving by ourself, which will produce images from the cameras mounted on the car and a CVS file which contain basic information of the training driving process.
 
 ---
 
@@ -11,23 +11,24 @@ There are **2** python files: **model.py**, and **drive.py**, in which **drive.p
 
 ## model.py
 ###There are several steps in the file.
-1. Import all the data and resize all the images for only remaining the most useful information.
+1. Import all the data and resize all the images for only remaining the most useful information. There are some useless part in the     images which is not needed for training like skies. In addition, downsampling the images can effectively save the training time. Finally, I only remain one channel of the images mainly for saving training time. Details are in the python script. 
 2. Set the images from three cameras as features and the turning angle as labels.
+
+            **Features shape: (13557, 20, 64, 1)**
+            **Labels shape: (13557,)**
 3. Split the data into training and validation datasets, in which validation datasets are 20% of whole datasets.
-4. Building model using Keras in reference to the tutorial by Udacity.
-5. After model training, save the model and weights as **model.json** and **model.h5** as required.
+4. Building model using Keras in reference to the tutorial by Udacity. Architecture details will be described later.
+5. After model training, save the model and weights as **model.json** and **model.h5** as required. 
 
 
 ## drive.py
-This is the python script that receives the data from the Udacity program, predicts the steering angle using the deep learning model, and send the throttle and the predicted angles back to the program.
-
-Since the images were reshaped and normalized during training, the image from the program is reshaped and normalized just as in **preprocess.py** and **model.py**
+The main purpose for this python script is connect the code with the simulator using the model in **model.py**.
 
 
 
-## Training
+## Model Architecture
 
-Below is the summary of the model I implemented to train the data.
+The following table is the Model Architecture table automatically generated using **model.summary()**.
 
             ____________________________________________________________________________________________________
             Layer (type)                     Output Shape          Param #     Connected to
@@ -65,17 +66,7 @@ Below is the summary of the model I implemented to train the data.
             Total params: 7,095
             Trainable params: 7,095
             Non-trainable params: 0
-            ____________________________________________________________________________________________________
-            Train on 10845 samples, validate on 2712 samples
 
----
-# Conclusion
-
-I found that the whole image can confuse the model due to unncessary background noises such as tries, skies, etc. I decided to cut those unncessary pixels and reduced the size by 25%. I only used red channel of the image because I assumed that red channel contains the better information for identifying the road and lanes than green and blue channels. As a result, the size of the image was 18 x 80 x 1. 
-
-In my model, I used 4 convolutional layers with 1 max pooling layer, and 3 more dense layers after flatten the matrix. For each convolutional layer, I decreased the channel size by half. When the size of the channel became 2 in the fourth convolutional layer, I applied max pooling with dropout with 25%. After flatten the matrix, the size of features became 360. I used dense layers with 16 features 4 times. Each **epoch** took about **100** seconds and I used **10 epoches** to train the data. As a result, the car drove by itself without popping onto the edges or out of the edges.
-
-The interesting thing I noticed was even though the model allowed the car to drive itself, the accuracy was only about **58%**. So the accuracy did not have to be high for car to drive autonomously. I believe that to increase the accuracy, I would need more data set and more epoches.
 
 
 ```python
