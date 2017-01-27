@@ -29,11 +29,7 @@ This is a project started by Udacity, the topic is Behavior Cloning. The trainin
 ## drive.py
 The main purpose for this python script is connect the code with the simulator using the model in **model.py**.
 
-
-
-## Model Architecture
-
-The following table is the Model Architecture table automatically generated using **model.summary()**.
+## Training process
 
 In this architecture, I didn't try a lot of version actually, the whole structure is similar to the keras tutorial.
 
@@ -44,6 +40,12 @@ For epochs choosing, 10 is a very common value. With bigger epoch will benefit t
 with 10, so I didn't set a higher epoch.
 
 Overall, the architecture works fine at the first beginning after learning deep in the keras tutorial.
+
+## Model Architecture
+
+The following table is the Model Architecture table automatically generated using **model.summary()**.
+
+
 
             ____________________________________________________________________________________________________
             Layer (type)                     Output Shape          Param #     Connected to
