@@ -31,15 +31,17 @@ The main purpose for this python script is connect the code with the simulator u
 
 ## Training process
 
-In this architecture, I didn't try a lot of version actually, the whole structure is similar to the keras tutorial.
+In this architecture, I didn't try several versions actually, the whole structure is similar to the keras tutorial. So 
+what I did is just following the structure.
 
 For batch size choosing, training speed will be quicker with the increasement of batch size but limited to the
 memory of computer, 64 is a common value I always use.
 
-For epochs choosing, 10 is a very common value. With bigger epoch will benefit the model, but the driving works great
+For epochs choosing, 10 is a very common value, so that's my initial setting. With bigger epoch will benefit the model, but the driving works great
 with 10, so I didn't set a higher epoch.
 
-Overall, the architecture works fine at the first beginning after learning deep in the keras tutorial.
+In a nutshell, the architecture is my script is actually the initial architecture. I didn't tune too much because the 
+simulation works perfect in the initial architecture.
 
 ## Model Architecture
 
